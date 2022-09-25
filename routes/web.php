@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Userend\UserdashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'user']], function () {
+    Route::get('/dashboard',[UserdashboardController::class, 'dashboard'])->name('userdashboard');
+    Route::get('/settings',[SettingsController::class, 'index'])->name('user.settings');
+    Route::resource('job', Userjobcontroller::class);
+    Route::resource('company', UsercompanyController::class);
+});
