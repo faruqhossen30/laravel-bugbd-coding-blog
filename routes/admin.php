@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 Auth::routes();
 
@@ -7,6 +9,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Dashboard Start
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::resource('category', CategoryController::class);
 
     Route::get('/', function () {
         return view('admin.dashboard');
