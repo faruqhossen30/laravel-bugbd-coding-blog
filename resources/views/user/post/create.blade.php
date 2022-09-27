@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <h6 class="card-title">post Form</h6>
                         {{-- title  --}}
-                        <x-input-text label="Title" placeholder="title" name="title" />
+                        <x-input-text label="Title" placeholder="Title" name="title" />
                         {{-- Description start --}}
                         <div class="row">
                             <div class="col-md-12 grid-margin stretch-card">
@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Image</h6>
                                 <p class="text-muted mb-3">Drag and Drop your image. </p>
-                                <input type="file" id="myDropify" name="post_image">
+                                <input type="file" id="myDropify" name="thumbnail">
                             </div>
                         </div>
                         {{-- Category --}}

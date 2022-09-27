@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('user.layout.master')
 @section('content')
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
