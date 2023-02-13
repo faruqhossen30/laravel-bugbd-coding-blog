@@ -1,4 +1,4 @@
-@extends('user.layout.master')
+@extends('admin.layout.master')
 @section('content')
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
@@ -11,7 +11,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('blog.index')}}" type="button" class="btn btn-inverse-primary btn-icon-text">
+                <a href="{{route('post.edit')}}" type="button" class="btn btn-inverse-primary btn-icon-text">
                     <i class="btn-icon-prepend" data-feather="list"></i>
                     Blog List
                   </a>
@@ -33,7 +33,7 @@
                                     Name
                                 </td>
                                 <td>
-                                    {{$blog->title}}
+                                    {{$post->title}}
                                 </td>
                             </tr>
                             <tr>
@@ -43,7 +43,7 @@
                                 {{-- <td>
                                     {{$jobindustry->photo}}
                                 </td> --}}
-                                <td><img src="{{ asset('storage/blog/' . $blog->thumbnail) }}" alt=""></td>
+                                <td><img src="{{ asset('storage/post/' . $post->thumbnail) }}" alt=""></td>
 
                             </tr>
                             <tr>
@@ -51,18 +51,18 @@
                                     Author
                                 </td>
                                 <td>
-                                    {{$blog->user_id}}
+                                    {{$post->user_id}}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="my-4">
-                    <a href="{{route('blog.edit', $blog->id)}}" type="button" class="btn btn-inverse-success btn-icon-text">
+                    <a href="{{route('post.edit', $post->id)}}" type="button" class="btn btn-inverse-success btn-icon-text">
                         <i class="btn-icon-prepend" data-feather="check-square"></i>
                        Edit
                       </a>
-                      <form action="{{route('blog.destroy', $blog->id)}}" method="post" style="display: inline">
+                      <form action="{{route('post.destroy', $post->id)}}" method="post" style="display: inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Sure ! Delete blog ?')"class="btn btn-inverse-danger btn-icon-text">

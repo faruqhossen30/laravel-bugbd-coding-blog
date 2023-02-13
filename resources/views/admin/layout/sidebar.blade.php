@@ -35,11 +35,11 @@
                 <div class="collapse {{ show_class(['email/*']) }}" id="circularAttributes">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#"
+                            <a href="{{ route('post.index')}}"
                                 class="nav-link {{ active_class(['email/inbox']) }}">All Post</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#"
+                            <a href="{{route('post.create')}}"
                                 class="nav-link {{ active_class(['email/inbox']) }}">Create Post</a>
                         </li>
                     </ul>
