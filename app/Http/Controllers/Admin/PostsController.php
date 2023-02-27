@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Userend;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 use Image;
+use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,6 +24,7 @@ class PostController extends Controller
         // return $posts;
         return view('user.post.index', compact('posts'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +33,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::get();
-        return view('user.post.create',compact('categories'));
+        return view('user.post.create', compact('categories'));
+        // return $categories;
     }
 
     /**
@@ -57,12 +59,14 @@ class PostController extends Controller
             $thumbnail = Str::uuid() . '.' . $extension;
             Image::make($imagethumbnail)->save('uploads/post/' . $thumbnail);
         }
+
+
         $data = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'title'       => $request->title,
+            'slug'        => Str::slug($request->title),
             'description' => $request->description,
-            'user_id' => Auth::user()->id,
-            'thumbnail' => $thumbnail
+            'user_id'     => Auth::user()->id,
+            'thumbnail'   => $thumbnail
 
         ];
         Post::create($data);
@@ -78,8 +82,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $blog = Blog::firstWhere('id',$id);
-        return view('backend.blog.show', compact('blog'));
+        $post = Post::firstWhere('id', $id);
+        return view('admin.post.show', compact('post'));
     }
 
     /**
@@ -90,9 +94,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $blog = Blog::firstWhere('id',$id);
+        $post = Post::firstWhere('id', $id);
         $categories = Category::get();
-        return view('backend.blog.edit', compact('blog','categories'));
+        return view('user.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -105,26 +109,26 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
+            'title'       => 'required',
             'description' => 'required',
         ]);
 
         $thumbnail = null;
         if ($request->file('thumbnail')) {
             $imagethumbnail = $request->file('thumbnail');
-            $extension = $imagethumbnail->getClientOriginalExtension();
-            $thumbnail = Str::uuid() . '.' . $extension;
-            Image::make($imagethumbnail)->save('uploads/post/' . $thumbnail);
+            $extension      = $imagethumbnail->getClientOriginalExtension();
+            $thumbnail      = Str::uuid() . '.' . $extension;
+            Image ::make($imagethumbnail)->save('uploads/post/' . $thumbnail);
         }
         $data = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
+            'title'       => $request->title,
+            'slug'        => Str::slug($request->title),
             'description' => $request->description,
-            'user_id' => Auth::user()->id,
-            'thumbnail' => $thumbnail
+            'user_id'     => Auth::user()->id,
+            'thumbnail'   => $thumbnail
 
         ];
-        Post::firstWhere('id',$id)->update($data);
+        Post::firstWhere('id', $id)->update($data);
         Session::flash('update');
         return redirect()->route('post.index');
     }

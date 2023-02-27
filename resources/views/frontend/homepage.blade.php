@@ -38,7 +38,7 @@
                                                 </li>
                                             </ul>
                                             <a href="{{ route('singlepost',$post->id) }}" class="primary-link"><h6 class="fs-17">{{$post->title}}</h6></a>
-                                            <p class="text-muted">{{ Str::limit($post->description, 160) }}</p>
+                                            <p class="text-muted">{!! Str::limit($post->description, 160) !!}</p>
                                             <div>
                                                 <a href="{{ route('singlepost',$post->id) }}" class="form-text text-primary">Read More <i class="uil uil-angle-right-b"></i></a>
                                             </div>
