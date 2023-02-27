@@ -26,6 +26,7 @@
         <link href="{{asset('frontend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('frontend/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <!--Custom Css-->
         @yield('OG')
 
@@ -43,11 +44,6 @@
                 {{-- singup model end --}}
 
                 @yield('main-contant')
-
-
-
-
-
 
                 <!-- START SUBSCRIBE -->
                 <section class="bg-subscribe">

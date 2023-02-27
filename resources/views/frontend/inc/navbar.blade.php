@@ -19,26 +19,17 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Companyies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Blog</a>
-                    </li>
-
-
                      <!--end dropdown-->
                      <li class="nav-item dropdown dropdown-hover">
                          <a class="nav-link" href="javascript:void(0)" id="productdropdown" role="button"
                              data-bs-toggle="dropdown" aria-expanded="false">
-                             All Jobs
+                             Category
                              <div class="arrow-down"></div>
                          </a>
                          <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
-                             <li><a class="dropdown-item" href="#">All Jobs</a></li>
-                             <li><a class="dropdown-item" href="#">Govt Job</a></li>
-                             <li><a class="dropdown-item" href="#">Company Job</a></li>
-                             <li><a class="dropdown-item" href="#">NGO Job</a></li>
+                             <li><a class="dropdown-item" href="#">Android</a></li>
+                             <li><a class="dropdown-item" href="#">Flutter</a></li>
+                             <li><a class="dropdown-item" href="#">Kotlin</a></li>
 
                          </ul>
                      </li>
