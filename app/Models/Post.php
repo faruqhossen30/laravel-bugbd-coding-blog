@@ -9,8 +9,10 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'slug', 'description', 'thumbnail', 'user_id'];
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
 }
