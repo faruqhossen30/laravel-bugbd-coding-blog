@@ -42,7 +42,7 @@
                                                 <div class="filler-job-form">
                                                     <i class="uil uil-search"></i>
                                                     <input type="search" name="keyword"
-                                                    @if($keyword) value="{{$keyword}}" @endif
+                                                        @if ($keyword) value="{{ $keyword }}" @endif
                                                         class="form-control filter-job-input-box"
                                                         id="exampleFormControlInput1" placeholder="Search your keyword">
                                                 </div>
@@ -66,15 +66,14 @@
                                                 <div class="p-4">
                                                     <div class="row">
                                                         <div class="col-lg-1">
-                                                            <a href="company-details.html"><img
-                                                                    src="{{ asset('frontend/assets/images/profile.jpg') }}"
+                                                            <a href="company-details.html"><img src="{{ asset('frontend/assets/images/profile.jpg') }}"
                                                                     alt="" class="img-fluid rounded-3"
                                                                     style="max-width: 50px"></a>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-lg-10">
                                                             <div class="mt-3 mt-lg-0">
-                                                                <h5 class="fs-17 mb-1"><a href="#"
+                                                                <h5 class="fs-17 mb-1"><a href="{{ route('singlepost', $post->id) }}"
                                                                         class="text-dark">{{ $post->title }}</a></h5>
                                                                 <p class="text-muted fs-14 mb-0">
                                                                     {{ Str::limit($post->description, 150) }}</p>
@@ -109,7 +108,7 @@
                                                         <!--end col-->
                                                         <div class="col-md-3">
                                                             <div class="text-md-end">
-                                                                <a href="#applyNow" data-bs-toggle="modal"
+                                                                <a href="{{ route('singlepost', $post->id) }}"
                                                                     class="primary-link">Read More<i
                                                                         class="mdi mdi-chevron-double-right"></i></a>
                                                             </div>
@@ -122,38 +121,13 @@
                                         @endforeach
 
 
+
+
                                     </div>
                                     <!-- End Job-list -->
-                                    <div class="row">
-                                        <div class="col-lg-12 mt-4 pt-2">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination job-pagination mb-0 justify-content-center">
-                                                    <li class="page-item disabled">
-                                                        <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                                                            <i class="mdi mdi-chevron-double-left fs-15"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item active"><a class="page-link"
-                                                            href="javascript:void(0)">1</a></li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="javascript:void(0)">2</a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="javascript:void(0)">3</a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link"
-                                                            href="javascript:void(0)">4</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="javascript:void(0)">
-                                                            <i class="mdi mdi-chevron-double-right fs-15"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <!--end col-->
-                                    </div><!-- end row -->
+                                    <div class="py-2">
+                                        {{ $posts->appends($_GET)->links() }}
+                                    </div>
                                 </div>
                             </div>
                             <!--end col-->
@@ -185,6 +159,9 @@
                                                                     for="{{ $category->id }}">{{ $category->name }}</label>
                                                             </div>
                                                         @endforeach
+
+                                                        <!-- End Job-list -->
+
 
                                                     </div>
                                                 </div>

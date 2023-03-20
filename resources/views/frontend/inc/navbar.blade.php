@@ -1,12 +1,12 @@
      <!--Navbar Start-->
      <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar" style="margin-top: 0">
          <div class="container-fluid custom-container">
-             <a class="navbar-brand text-dark fw-bold me-auto" href="{{route('homepage')}}">
+             <a class="navbar-brand text-dark fw-bold me-auto" href="{{ route('homepage') }}">
                  {{-- <img src="{{ asset('frontend/assets/images/logo-dark.png') }}" height="22" alt=""
                      class="logo-dark" />
                  <img src="{{ asset('frontend/assets/images/logo-light.png') }}" height="22" alt=""
                      class="logo-light" /> --}}
-                     Bug BD
+                 Bug BD
              </a>
              <div>
                  <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
@@ -16,9 +16,9 @@
              </div>
              <div class="collapse navbar-collapse" id="navbarCollapse">
                  <ul class="navbar-nav mx-auto navbar-center">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Home</a>
-                    </li>
+                     <li class="nav-item">
+                         <a href="{{ route('homepage') }}" class="nav-link">Home</a>
+                     </li>
                      <!--end dropdown-->
                      <li class="nav-item dropdown dropdown-hover">
                          <a class="nav-link" href="javascript:void(0)" id="productdropdown" role="button"
@@ -26,11 +26,11 @@
                              Category
                              <div class="arrow-down"></div>
                          </a>
-                         <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
-                             <li><a class="dropdown-item" href="#">Android</a></li>
-                             <li><a class="dropdown-item" href="#">Flutter</a></li>
-                             <li><a class="dropdown-item" href="#">Kotlin</a></li>
 
+                         <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="productdropdown">
+                             @foreach ($categories as $category)
+                             <li><a class="dropdown-item" href="#">{{$category->name}}</a></li>
+                             @endforeach
                          </ul>
                      </li>
                      <!--end dropdown-->
@@ -49,7 +49,7 @@
              <ul class="header-menu list-inline d-flex align-items-center mb-0">
                  @guest
                      <li>
-                         <a href="{{url('login')}}">Sign In</a>
+                         <a href="{{ url('login') }}">Sign In</a>
                      </li>
                  @endguest
                  @auth
@@ -57,13 +57,13 @@
                          <a href="javascript:void(0)" class="header-item" id="userdropdown" data-bs-toggle="dropdown"
                              aria-expanded="false">
 
-                            @if (auth()->user()->image)
-                            <img src="{{asset('storage/profile-picture/'.Auth::user()->image)}}" alt="mdo" width="35"
-                            height="35" class="rounded-circle me-1">
-                            @else
-                            <img src="{{asset('frontend/assets/images/defultuser.jpg')}}" alt="mdo" width="35"
-                            height="35" class="rounded-circle me-1">
-                            @endif
+                             @if (auth()->user()->image)
+                                 <img src="{{ asset('storage/profile-picture/' . Auth::user()->image) }}" alt="mdo"
+                                     width="35" height="35" class="rounded-circle me-1">
+                             @else
+                                 <img src="{{ asset('frontend/assets/images/defultuser.jpg') }}" alt="mdo"
+                                     width="35" height="35" class="rounded-circle me-1">
+                             @endif
 
                              <span class="d-none d-md-inline-block fw-medium">
                                  {{ auth()->user()->name }}
@@ -74,15 +74,15 @@
                              <li><a class="dropdown-item" href="bookmark-jobs.html">Bookmarks Jobs</a></li>
                              <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
                              {{-- <li><a class="dropdown-item" href="sign-out.html">Logout</a></li> --}}
-                             <li>  <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
+                             <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                Logout
-                             </a>
-                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                            </li>
+                                     Logout
+                                 </a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                     @csrf
+                                 </form>
+                             </li>
                          </ul>
                      </li>
                  @endauth

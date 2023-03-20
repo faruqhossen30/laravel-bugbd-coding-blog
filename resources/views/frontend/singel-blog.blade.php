@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="ms-3">
                                             <a href="blog-author.html" class="primary-link">
-                                                <h6 class="mb-0">By {{$blog->user->name}}</h6>
+                                                <h6 class="mb-0">By Faruq Hossen</h6>
                                             </a>
                                         </div>
                                     </div>
@@ -273,9 +273,9 @@
                                     <h6 class="fs-16 mb-3">Category</h6>
                                 </div>
                                 <ul class="list-unstyled mb-0 mt-3">
-                                    @foreach ($categories as $category)
+                                    {{-- @foreach ($categories as $category)
                                     <li class="py-1"><a class="me-2 text-muted" href="javascript:void(0)"><i class="uil uil-angle-right-b"></i>{{$category->name}}</a></li>
-                                    @endforeach
+                                    @endforeach --}}
                                 </ul>
                             </div>
                             <!--end Categories-->

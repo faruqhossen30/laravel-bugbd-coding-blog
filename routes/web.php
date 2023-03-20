@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
-Route::get('/post/{$id}', [HomepageController::class, 'index'])->name('singlepost');
+Route::get('post/{id}', [HomepageController::class, 'singlePost'])->name('singlepost');
 
 Route::group(['prefix' => 'user', 'middleware' => ['auth', 'user']], function () {
     Route::get('/dashboard', [UserdashboardController::class, 'dashboard'])->name('userdashboard');
