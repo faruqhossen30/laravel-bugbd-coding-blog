@@ -11,8 +11,8 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('blog.update', $blog->id) }}" method="POST"
-                        enctype="multipart/form-data" class="forms-sample">
+                    <form action="{{ route('blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data"
+                        class="forms-sample">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -21,7 +21,13 @@
                                     <div class="card-body">
                                         <h6 class="card-title">Blog Form</h6>
                                         {{-- title  --}}
-                                        <x-input-text label="Title" placeholder="title" name="title"   value="{{ $blog->title }}" />
+                                        {{-- <x-input-text label="Title" placeholder="title" name="title"   value="{{ $blog->title }}" /> --}}
+                                        <div class="mb-3">
+                                            <label for="exampleInputUsername1" class="form-label">Title</label>
+                                            <input type="text" value="{{ $blog->title }}" class="form-control" id="exampleInputUsername1"
+                                                autocomplete="off" placeholder=post tile" name="title">
+                                        </div>
+
                                         {{-- Description start --}}
                                         <div class="row">
                                             <div class="col-md-12 grid-margin stretch-card">
@@ -42,10 +48,12 @@
                                             </div>
                                             <div class="card-body">
                                                 {{-- meta title title  --}}
-                                                <x-input-text label="Meta Title" placeholder="meta_title" name="meta_title" value="{{ $blog->meta_title }}" />
+                                                <x-input-text label="Meta Title" placeholder="meta_title" name="meta_title"
+                                                    value="{{ $blog->meta_title }}" />
                                                 {{-- meta description --}}
                                                 <div class="mb-3">
-                                                    <label for="exampleInputUsername1" class="form-label"> Meta Description</label>
+                                                    <label for="exampleInputUsername1" class="form-label"> Meta
+                                                        Description</label>
                                                     <textarea name="meta_description" id="meta_description" cols="30" rows="10" class="form-control">
                                                         {{ $blog->meta_description }}
                                                     </textarea>
@@ -55,7 +63,8 @@
                                                     <label for="exampleInputUsername1" class="form-label">Tags input</label>
                                                     <p class="mb-2">Type something to add a new tag</p>
                                                     <div>
-                                                        <input name="meta_tag" id="tags"  value="{{ $blog->meta_tag }}" />
+                                                        <input name="meta_tag" id="tags"
+                                                            value="{{ $blog->meta_tag }}" />
                                                     </div>
                                                 </div>
 
@@ -74,7 +83,8 @@
                                             <div class="card-body">
                                                 <h6 class="card-title">Image</h6>
                                                 <p class="text-muted mb-3">Drag and Drop your image. </p>
-                                                <input type="file" id="myDropify" name="thumbnail" @if($blog->thumbnail) data-default-file="{{asset('uploads/blog/'.$blog->thumbnail)}}" @endif>
+                                                <input type="file" id="myDropify" name="thumbnail"
+                                                    @if ($blog->thumbnail) data-default-file="{{ asset('uploads/blog/' . $blog->thumbnail) }}" @endif>
                                             </div>
                                             {{-- Category --}}
                                         </div>
@@ -83,10 +93,8 @@
                                                 <div class="card-title">Category</div>
                                                 @foreach ($categories as $category)
                                                     <div class="form-check mb-2">
-                                                        <input name="category_id[]" value="{{ $category->id }}" type="checkbox"
-
-                                                        @if(empty(!json_decode($blog->category_id)) && in_array($category->id, json_decode($blog->category_id))) checked @endif
-
+                                                        <input name="category_id[]" value="{{ $category->id }}"
+                                                            type="checkbox" @if (empty(!json_decode($blog->category_id)) && in_array($category->id, json_decode($blog->category_id))) checked @endif
                                                             class="form-check-input" id="category{{ $category->id }}">
                                                         <label class="form-check-label" for="category{{ $category->id }}">
                                                             {{ $category->name }}
