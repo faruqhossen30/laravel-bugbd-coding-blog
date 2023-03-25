@@ -75,8 +75,11 @@
                                                             <div class="mt-3 mt-lg-0">
                                                                 <h5 class="fs-17 mb-1"><a href="{{ route('singlepost', $post->id) }}"
                                                                         class="text-dark">{{ $post->title }}</a></h5>
+                                                                {{-- <p class="text-muted fs-14 mb-0">
+                                                                    {{ Str::limit($post->description, 150) }}</p> --}}
                                                                 <p class="text-muted fs-14 mb-0">
-                                                                    {{ Str::limit($post->description, 150) }}</p>
+                                                                    {!! Str::limit($post->description, 150) !!}</p>
+
                                                                 <div class="mt-2">
                                                                     <span class="badge bg-soft-success mt-1">Ms Word</span>
                                                                 </div>

@@ -21,7 +21,6 @@
                                     <div class="card-body">
                                         <h6 class="card-title">Blog Form</h6>
                                         {{-- title  --}}
-                                        {{-- <x-input-text label="Title" placeholder="title" name="title"   value="{{ $post->title }}" /> --}}
                                             <div class="mb-3">
                                                 <label for="exampleInputUsername1" class="form-label">Title</label>
                                                 <input type="text" value="{{ $post->title }}" class="form-control" id="exampleInputUsername1" autocomplete="off"
